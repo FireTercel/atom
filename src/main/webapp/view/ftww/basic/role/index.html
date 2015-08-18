@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+${user.company.position.name}
+<br>
+
+<%for(function in role.functionList){%>
+		${function.name}<br>
+	<%for(button in function.buttonList!){ %>
+			<a href="${button.url}">	${button.name}</a><br>
+	<%}%>
+<%}%>
+<a href="/signout">退出</a>
+</body>
+</html>

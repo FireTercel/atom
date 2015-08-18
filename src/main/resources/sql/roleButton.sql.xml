@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  
+	角色，功能，按钮sql
+-->
+<sqlRoot>
+	<sqlGroup name="basic.roleButton">
+		<!-- 查询角色、功能、按钮关系表 -->
+		<sql id="byRoleFunction">
+			<![CDATA[
+			select id, roleid, functionid, buttonids
+			from pt_role_button
+        	where roleid = ? and functionid = ?
+    	]]>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

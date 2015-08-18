@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  
+	按钮sql
+-->
+<sqlRoot>
+	<sqlGroup name="basic.button">
+		<!-- 根据RoleButton的buttonids查询某功能可用按钮集合 -->
+		<sql id="byRoleButton">
+			<![CDATA[
+        	select id, version, functionid, functionname, name, value, url, orderid, created_at, created_userid, updated_at, updated_userid
+        	from pt_button where id in (${param})
+    	]]>
+		</sql>
+
+
+	</sqlGroup>
+</sqlRoot>

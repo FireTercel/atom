@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  
+	功能sql
+-->
+<sql-statement namespace="basic.function">
+	
+	<!-- 查询所有功能 -->
+	<sql id="all">
+		<![CDATA[ 
+        	select id from pt_function
+    	]]>
+	</sql>
+	
+	<!-- 根据role的functionids查询功能集合 -->
+	<sql id="byRole">
+		<![CDATA[ 
+        	select id, version, name, value, url, description, pid, pidpath, orderid, splitpage, formtoken, created_at, created_userid, updated_at, updated_userid 
+        	from pt_function where id in (${param})
+    	]]>
+	</sql>
+	
+	<!-- 动态SQL处理 -->
+	<sql id="splitPageFrom">
+		<![CDATA[ 
+        	from pt_operator o
+        	left join pt_module m on o.moduleids = m.ids
+        	left join pt_systems s on s.ids = m.systemsids
+        	where 1=1
+			
+			<% if(!isEmpty(names)){ %>
+					and o.names like #'%$names$%'#
+			<% } %>
+			
+			<% if(!isEmpty(url)){ %>
+					and o.url like #'%$url$%'#
+			<% } %>
+    	]]>
+	</sql>
+	
+</sql-statement>
